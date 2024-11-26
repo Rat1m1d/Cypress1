@@ -1,0 +1,20 @@
+[
+    {
+      "name": "MacBook Pro",
+      "introduced": "2024-01-01",
+      "discontinued": "2024-12-31",
+      "company": "Apple Inc."
+    },
+    {
+      "name": "Dell XPS 13",
+      "introduced": "2023-05-15",
+      "discontinued": "2023-11-30",
+      "company": "Digital Equipment Corporation"
+    },
+    {
+      "name": "HP Spectre x360",
+      "introduced": "2023-03-10",
+      "discontinued": "2024-03-10",
+      "company": "Hewlett-Packard"
+    }
+  ]
