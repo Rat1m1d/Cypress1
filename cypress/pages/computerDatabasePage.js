@@ -1,40 +1,43 @@
 class computerDatabasePage {
     elements = {
-        addBtn : () => cy.get('#add'),
-        nameTxt : () => cy.get('#name'),
-        introducedTxt : () => cy.get('#introduced'),
-        discontinuedTxt : () => cy.get('#discontinued'),
         companyDropdown : () => cy.get('#company'),
-        submitBtn : () => cy.get('[type=submit]'),
         warningMsg : () => cy.get('.warning'),
-        searchBox : () => cy.get('#searchbox'),
-        searchSubmit : () => cy.get('#searchsubmit'),
         rowCount : () => cy.get('table.computers tbody tr'),
-        getMessage : () => cy.get('#main')
+        getMessage : () => cy.get('#main'),
+        thirdComputer : () => cy.get('table.computers tbody tr:nth-child(3) td:nth-child(1) a'),
+        nextBtn : () => cy.contains("Next →")
     }
-    addComputer() {
-        this.elements.addBtn().click()
+    strings = {
+        addButton : '#add',
+        submitButton : '[type=submit]',
+        searchButton : '#searchsubmit',
+        computerName : '#name',
+        introduced: '#introduced',
+        discontinued : '#discontinued',
+        searchBox : '#searchbox',
+        thirdComputerName : 'Apple IIc',
+        nextButton : '#pagination ul li.next a'
     }
-    sendComputerName(computerName) {
-        this.elements.nameTxt().type(computerName)
+    clickButton(buttonElement) {
+        cy.get(buttonElement).click()
     }
-    sendIntroducedDate(introducedDate) {
-        this.elements.introducedTxt().type(introducedDate)
+    clickButton(buttonElement, cnt) {
+        let i = 1
+        do {
+        cy.get(buttonElement).click()
+        i++
+        } while (i <= cnt)
     }
-    sendDiscontinuedDate(discontinuedDate) {
-        this.elements.discontinuedTxt().type(discontinuedDate)
+    sendText(locator, text) {
+        cy.get(locator).type(text)
     }
     sendCompany(companyValue) {
         this.elements.companyDropdown().select(companyValue)
     }
-    createComputer() {
-        this.elements.submitBtn().click()
-    }
-    sendSearchText() {
-        this.elements.searchBox().type('ACE')
-    }
-    searchComputers() {
-        this.elements.searchSubmit().click()
+    navigate(cnt) {
+        for (let i = 1; i <= cnt; i++) {
+            this.elements.nextBtn().click()
+        }
     }
 }
 
